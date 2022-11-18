@@ -1,3 +1,14 @@
+"""
+This is my version of the Silly Name Generator practice project from Impractical \
+Python Projects. If run directly, it will print a random silly name \
+and then prompt to be run again or exit. 
+ 
+Functions:
+    main() -> None
+    make_a_name() -> string
+    get_input -> bool
+"""
+
 import sys
 import random
 
@@ -32,10 +43,25 @@ last = ('Appleyard', 'Bigmeat', 'Bloominshine', 'Boogerbottom',
         'Woolysocks')
 
 
-def main():
-    # Get a random full name
-    # Print it
-    # Ask for user input with options "y" or "n"
+def main() -> None:
+    """ Print a generated name and then prompt to repeat or exit. """
+    while True:
+        print(make_a_name())
+        if get_input():
+            continue
+        else:
+            sys.exit("Bye")
+
+
+def make_a_name() -> str:
+    """Returns a random silly name as a string."""
+    return "test name"
+
+
+def get_input() -> bool:
+    """Ask for 'y' or 'n' input to try again."""
+    response = input("Try again? 'y' or 'n': ")  # TODO add validation
+    return True if response == 'y' else False
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ and then prompt to be run again or exit.
 Functions:
     main() -> None
     make_a_name() -> string
-    get_input -> bool
+    prompt() -> bool
 """
 
 import sys
@@ -16,7 +16,8 @@ first = ('Baby Oil', 'Bad News', 'Big Burps', "Bill 'Beenie-Weenie'",
          "Bob 'Stinkbug'", 'Bowel Noises', 'Boxelder', "Bud 'Lite' ",
          'Butterbean', 'Buttermilk', 'Buttocks', 'Chad', 'Chesterfield',
          'Chewy', 'Chigger", "Cinnabuns', 'Cleet', 'Cornbread', 'Crab Meat',
-         'Crapps', 'Dark Skies', 'Dennis Clawhammer', 'Dicman', 'Elphonso', 'Fancypants', 'Figgs', 'Foncy', 'Gootsy', 'Greasy Jim', 'Huckleberry',
+         'Crapps', 'Dark Skies', 'Dennis Clawhammer', 'Dicman', 'Elphonso',
+         'Fancypants', 'Figgs', 'Foncy', 'Gootsy', 'Greasy Jim', 'Huckleberry',
          'Huggy', 'Ignatious', 'Jimbo', "Joe 'Pottin Soil'", 'Johnny',
          'Lemongrass', 'Lil Debil', 'Longbranch', '"Lunch Money"',
          'Mergatroid', '"Mr Peabody"', 'Oil-Can', 'Oinks', 'Old Scratch',
@@ -46,21 +47,26 @@ last = ('Appleyard', 'Bigmeat', 'Bloominshine', 'Boogerbottom',
 def main() -> None:
     """ Print a generated name and then prompt to repeat or exit. """
     while True:
-        print(make_a_name())
-        if get_input():
+        print(f"\n{make_a_name()}\n", file=sys.stderr)
+        if prompt():
             continue
         else:
-            sys.exit("Bye")
+            sys.exit("\nK Bye\n")
 
 
 def make_a_name() -> str:
     """Returns a random silly name as a string."""
-    return "test name"
+    name = f"{random.choice(first)} {random.choice(last)}"
+    return name
 
 
-def get_input() -> bool:
-    """Ask for 'y' or 'n' input to try again."""
-    response = input("Try again? 'y' or 'n': ")  # TODO add validation
+def prompt() -> bool:
+    """Asks for 'y' or 'n' input to try again or exit."""
+    while True:
+        response = input("Try again? 'y' or 'n': ").lower()
+        if response in ['y', 'n']:
+            break
+
     return True if response == 'y' else False
 
 

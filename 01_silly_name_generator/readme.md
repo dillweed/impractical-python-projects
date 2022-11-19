@@ -4,7 +4,7 @@
 
 User should run the program from the command line to generate a first last name combination randomly selected from saved lists. The generated full name will display as stdout.
 
-## Steps
+## Pseudocode
 
 1. Import sys and random
 1. Load a tuple of first names.

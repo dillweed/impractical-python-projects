@@ -5,6 +5,7 @@ To form Pig Latin, you take an English word that begins with a consonant,
 move that consonant to the end, and then add “ay” to the end of the word.
 If the word begins with a vowel, you simply add “way” to the end of the word.
 """
+# TODO preserve '.'
 
 
 def main():
@@ -31,7 +32,6 @@ def convert_to_pig_latin(input_text) -> str:
     Returns:
         str: Converted text to pig-latin
     """
-
     vowels = "aeiouAEIOU"
     pig_latin = []
 
@@ -47,8 +47,8 @@ def convert_to_pig_latin(input_text) -> str:
                 swap_index = i
                 break
         if swap_index:  # If word begins with a consonant
-            trans = f"{word[swap_index:]}{word[:swap_index]}ay"
-            pig_latin.append(trans)
+            translated_word = f"{word[swap_index:]}{word[:swap_index]}ay"
+            pig_latin.append(translated_word)
         else:  # Word begins with a vowel
             pig_latin.append(f"{word}way")
 

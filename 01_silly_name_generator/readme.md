@@ -1,4 +1,6 @@
-# Pseudocode for Silly Name Generator
+# Silly Name Generator
+
+Practice project 01 from Impractical Python Projects
 
 ## Objective
 

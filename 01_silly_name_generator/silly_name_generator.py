@@ -1,8 +1,8 @@
 """
 This is my version of the Silly Name Generator practice project from Impractical \
 Python Projects. If run directly, it will print a random silly name \
-and then prompt to be run again or exit. 
- 
+and then prompt to be run again or exit.
+
 Functions:
     main() -> None
     make_a_name() -> string
@@ -50,8 +50,7 @@ def main() -> None:
         print(f"\n{make_a_name()}\n", file=sys.stderr)
         if prompt():
             continue
-        else:
-            sys.exit("\nK Bye\n")
+        sys.exit("\nK Bye\n")
 
 
 def make_a_name() -> str:

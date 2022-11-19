@@ -45,7 +45,7 @@ last = ('Appleyard', 'Bigmeat', 'Bloominshine', 'Boogerbottom',
 
 
 def main() -> None:
-    """ Print a generated name and then prompt to repeat or exit. """
+    """Print a generated name and then prompt to repeat or exit."""
     while True:
         print(f"\n{make_a_name()}\n", file=sys.stderr)
         if prompt():
@@ -54,13 +54,13 @@ def main() -> None:
 
 
 def make_a_name() -> str:
-    """Returns a random silly name as a string."""
+    """Return a random silly name as a string."""
     name = f"{random.choice(first)} {random.choice(last)}"
     return name
 
 
 def prompt() -> bool:
-    """Asks for 'y' or 'n' input to try again or exit."""
+    """Ask for 'y' or 'n' input to try again or exit."""
     while True:
         response = input("Try again? 'y' or 'n': ").lower()
         if response in ['y', 'n']:

@@ -19,7 +19,7 @@ def get_char_sums(input_text: str) -> dict[str, int]:
     """Create a dictionary of character sums
 
     Args:
-        input_text (str): 
+        input_text (str):
 
     Returns:
         dict: 'a'-'z' keys with sum values
@@ -49,8 +49,8 @@ def print_sum_chart(sums: dict[str, int]) -> None:
 
     # Print dict as bar chart fitted to WIDTH
     print("   "+"-" * WIDTH)
-    for k, v in sums.items():
-        print(f"{k}: {k*int(v*multiplier):<{WIDTH}}|")
+    for _k, _v in sums.items():
+        print(f"{_k}: {_k*int(_v*multiplier):<{WIDTH}}|")
     print("   "+"-" * WIDTH)
 
 

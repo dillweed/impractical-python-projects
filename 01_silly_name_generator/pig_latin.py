@@ -44,9 +44,9 @@ def convert_to_pig_latin(input_text: str) -> str:
     # For each word, split on index of first vowel char
     for word in words:
         swap_index: int = 0  # Position of first vowel char
-        for i, c in enumerate(word):
-            if c in vowels:
-                swap_index = i
+        for _i, _c in enumerate(word):
+            if _c in vowels:
+                swap_index = _i
                 break
         if swap_index:  # If word begins with a consonant
             translated_word: str = f"{word[swap_index:]}{word[:swap_index]}ay"

@@ -1,18 +1,12 @@
 # Silly Name Generator
 
-Practice project 01 from Impractical Python Projects
+Practice project 01 from [Impractical Python Projects](https://nostarch.com/impracticalpythonprojects)
 
 ## Objective
 
-User should run the program from the command line to generate a first last name combination randomly selected from saved lists. The generated full name will display as stdout.
+A user will run the program from the command line to generate a first and last name combination randomly selected from saved lists. The generated full name will print to stdout.
 
-## Pseudocode
+### Practice projects
 
-1. Import sys and random
-1. Load a tuple of first names.
-1. Load a tuple of last names.
-1. Use random choice to pick an item from each.
-1. Print first last with a space inbetween using red font with `print(something, file=sys.stderr)`.
-1. Ask user to play again or quit.
-1. Repeat if "y" is entered.
-1. Quit using sys.exit("Goodbye message").
+1. ```pig_latin.py``` Converts sentences to pig latin.
+1. ```bar_chart.py``` Displays a graphical bar chart of the relative frequency of characters in the given text.

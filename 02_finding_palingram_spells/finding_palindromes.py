@@ -16,7 +16,8 @@ def main():
             palindromes.append(word)
 
     # Print palindrome list
-    print(f"\n{len(palindromes)} palindromes found.\n\n", *palindromes)
+    print(f"\n{len(palindromes)} palindromes found.\n")
+    print(*palindromes, sep=", ")
 
 
 def open_file(file: str) -> list:

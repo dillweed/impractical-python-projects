@@ -2,20 +2,20 @@
 
 from collections import defaultdict
 
-WIDTH = 75  # Chart max char width
+WIDTH: int = 75  # Chart max char width
 
 
-def main():
+def main() -> None:
     """Process text from interactive input"""
     # Ask for text input
-    input_text = input("Enter text: ")
+    input_text: str = input("Enter text: ")
     # Get dict of char sums
-    sums = get_char_sums(input_text)
+    sums: dict[str, int] = get_char_sums(input_text)
     # Print char sums as bar chart
     print_sum_chart(sums)
 
 
-def get_char_sums(input_text) -> dict:
+def get_char_sums(input_text: str) -> dict[str, int]:
     """Create a dictionary of character sums
 
     Args:
@@ -25,26 +25,27 @@ def get_char_sums(input_text) -> dict:
         dict: 'a'-'z' keys with sum values
     """
     # Strip text of non-alpha chars
-    cleaned_text = "".join(
+    cleaned_text: str = "".join(
         [c.lower() if c.isalpha() else "" for c in input_text])
 
     # Sum chars count as values in a-z dictionary
-    sums = defaultdict(lambda: 0)  # a-z dict values default to 0
+    sums: dict[str, int] = defaultdict(
+        lambda: 0)  # a-z dict values default to 0
     for i in range(ord('a'), ord('z') + 1):
         sums[chr(i)] = cleaned_text.count(chr(i))
 
     return sums
 
 
-def print_sum_chart(sums) -> None:
+def print_sum_chart(sums: dict[str, int]) -> None:
     """Print sums dict as bar chart
 
     Args:
         sums (dict): 'a'-'z' keys with char count values
     """
     # Get max count to normalize chart to WIDTH
-    max_count = max(sums.values())
-    multiplier = WIDTH / max_count
+    max_count: int = max(sums.values())
+    multiplier: float = WIDTH / max_count
 
     # Print dict as bar chart fitted to WIDTH
     print("   "+"-" * WIDTH)

@@ -20,11 +20,11 @@ def get_input() -> str:
     Returns:
         str: User input text
     """
-    input_text = input("Type a sentence: ")
+    input_text: str = input("Type a sentence: ")
     return input_text
 
 
-def convert_to_pig_latin(input_text) -> str:
+def convert_to_pig_latin(input_text: str) -> str:
     """Convert text to pig-latin.
 
     Args:
@@ -33,22 +33,23 @@ def convert_to_pig_latin(input_text) -> str:
     Returns:
         str: Converted text to pig-latin
     """
-    vowels = "aeiouAEIOU"
-    pig_latin = []
+    vowels: str = "aeiouAEIOU"
+    pig_latin: list[str] = []
 
     # Convert non-alpha characters to spaces
-    cleaned_text = "".join([c if c.isalpha() else " " for c in input_text])
+    cleaned_text: str = "".join(
+        [c if c.isalpha() else " " for c in input_text])
     # Split words to list
-    words = cleaned_text.split()
+    words: list = cleaned_text.split()
     # For each word, split on index of first vowel char
     for word in words:
-        swap_index = 0
+        swap_index: int = 0  # Position of first vowel char
         for i, c in enumerate(word):
             if c in vowels:
                 swap_index = i
                 break
         if swap_index:  # If word begins with a consonant
-            translated_word = f"{word[swap_index:]}{word[:swap_index]}ay"
+            translated_word: str = f"{word[swap_index:]}{word[:swap_index]}ay"
             pig_latin.append(translated_word)
         else:  # Word begins with a vowel
             pig_latin.append(f"{word}way")

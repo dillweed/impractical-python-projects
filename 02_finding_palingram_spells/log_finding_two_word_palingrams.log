@@ -1,0 +1,8 @@
+2022-11-21 14:07:07,643 Just an information
+2022-11-21 14:07:07,643 Its a Warning
+2022-11-21 14:07:07,643 Did you try to divide by zero
+2022-11-21 14:07:07,643 Internet is down
+2022-11-21 14:10:42,984 Runtime for pal_gram_algo() was ```215``` seconds.
+2022-11-21 14:10:42,986 Runtime for main() was ```215``` seconds.
+2022-11-21 14:20:19,286 Runtime for pal_gram_algo() was 215.12475490570068 seconds.
+2022-11-21 14:20:19,288 Runtime for main() was 215.12766909599304 seconds.

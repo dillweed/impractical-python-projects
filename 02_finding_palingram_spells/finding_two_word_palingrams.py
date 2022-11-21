@@ -1,5 +1,7 @@
 """TBA."""
 import sys
+import time
+import logger
 
 FILE_PATH: str = "inventwithpython_dictionary.txt"
 PALINGRAM_PATH: str = "palingrams.txt"
@@ -7,6 +9,7 @@ PALINGRAM_PATH: str = "palingrams.txt"
 
 def main():
     """TBA."""
+    start_time = time.time()
     # Read dictionary file
     word_list: list = open_file(FILE_PATH)
 
@@ -20,6 +23,9 @@ def main():
 
     # Write palingram dict to file
     write_file(PALINGRAM_PATH, palingrams)
+    end_time = time.time()
+    logger.log.info("Runtime for pal_gram_algo draft 1 was %s seconds.",
+                    str(end_time - start_time))
 
 
 def pal_gram_algo(word: str, word_list: list) -> list:
@@ -44,6 +50,18 @@ def pal_gram_algo(word: str, word_list: list) -> list:
             pals.append(f"{segment1} {word}")
 
     return pals
+
+
+def is_pal(word: str) -> bool:
+    """Return bool if word is a palindrome.
+
+    Args:
+        word (str): Word to test
+
+    Returns:
+        bool: True if word is a palindrome
+    """
+    return word == word[::-1]
 
 
 def write_file(file: str, palingrams: dict) -> None:
@@ -71,18 +89,6 @@ def open_file(file: str) -> list:
         print(_e)
         sys.exit(1)
     return word_list
-
-
-def is_pal(word: str) -> bool:
-    """Return bool if word is a palindrome.
-
-    Args:
-        word (str): Word to test
-
-    Returns:
-        bool: True if word is a palindrome
-    """
-    return word == word[::-1]
 
 
 if __name__ == "__main__":

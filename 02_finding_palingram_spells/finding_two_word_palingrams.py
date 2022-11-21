@@ -2,6 +2,7 @@
 import sys
 
 FILE_PATH: str = "inventwithpython_dictionary.txt"
+PALINGRAM_PATH: str = "palingrams.txt"
 
 
 def main():
@@ -16,10 +17,9 @@ def main():
         found_palingram = pal_gram_algo(word, word_list)
         if found_palingram:
             palingrams[word] = found_palingram
-    print(palingrams)
-    # test = "porter"
-    # palingrams = pal_gram_algo(test, word_list)
-    # print(f"Palingrams: {palingrams}")
+
+    # Write palingram dict to file
+    write_file(PALINGRAM_PATH, palingrams)
 
 
 def pal_gram_algo(word: str, word_list: list) -> list:
@@ -44,6 +44,13 @@ def pal_gram_algo(word: str, word_list: list) -> list:
             pals.append(f"{segment1} {word}")
 
     return pals
+
+
+def write_file(file: str, palingrams: dict) -> None:
+    """TBA."""
+    with open(file, 'w', encoding="utf-8") as _f:
+        for key, value in palingrams.items():
+            _f.write(f"{key:<15} {', '.join(value)}\n")
 
 
 def open_file(file: str) -> list:

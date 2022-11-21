@@ -13,13 +13,37 @@ def main():
     # Key is core word. Value is list containing found palingram strings
     palingrams = {}
     for word in word_list:
-        palingrams[word] = pal_gram_algo(word)
+        found_palingram = pal_gram_algo(word, word_list)
+        if found_palingram:
+            palingrams[word] = found_palingram
     print(palingrams)
+    # test = "porter"
+    # palingrams = pal_gram_algo(test, word_list)
+    # print(f"Palingrams: {palingrams}")
 
 
-def pal_gram_algo(word: str) -> list:
+def pal_gram_algo(word: str, word_list: list) -> list:
     """TBA."""
-    return [word]
+    pals = []
+    # mirror = [word, word[::-1]]  # To test word forward and reversed
+    if is_pal(word):  # Single word palindrome
+        pals.append(word)
+    # Search word forward
+    for _i in range(1, len(word)):
+        segment1 = word[:_i]
+        segment2 = word[_i:]
+        # print(segment1, segment2)
+        if segment1[::-1] in word_list and is_pal(segment2):
+            pals.append(f"{word} {segment1[::-1]}")
+    # Search word reversed
+    for _i in range(len(word)-1):
+        segment1 = word[:_i:-1]
+        segment2 = word[_i::-1]
+        # print(segment1, segment2)
+        if segment1 in word_list and is_pal(segment2):
+            pals.append(f"{segment1} {word}")
+
+    return pals
 
 
 def open_file(file: str) -> list:

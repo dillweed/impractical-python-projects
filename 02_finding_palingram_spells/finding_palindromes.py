@@ -1,12 +1,12 @@
-"""TBA."""
+"""Find palindromes within a given list of words."""
 import sys
 
-FILE_PATH: str = "inventwithpython_dictionary.txt"
+FILE_PATH: str = "words_2of4brif.txt"
 
 
 def main():
-    """TBA."""
-    # Read dictionary file
+    """Find palindromes within a given list of words."""
+    # Read word file
     word_list: list = open_file(FILE_PATH)
 
     # Make a list of palindromes
@@ -21,15 +21,7 @@ def main():
 
 
 def open_file(file: str) -> list:
-    """Open file and return list of lines in lowercase.
-
-    Args:
-        FILE_PATH (str): The spelling dictionary file
-
-    Returns:
-        words (list): Word list in lowercase
-    """
-    # Read dictionary file with try block
+    """Open text file and return a list of words."""
     try:
         with open(file, "r", encoding="utf-8") as word_file:
             word_list: list = word_file.read().lower().splitlines()
@@ -41,14 +33,7 @@ def open_file(file: str) -> list:
 
 
 def is_pal(word: str) -> bool:
-    """Return bool if word is a palindrome.
-
-    Args:
-        word (str): Word to test
-
-    Returns:
-        bool: True if word is a palindrome
-    """
+    """Return bool if word str is a palindrome."""
     return word == word[::-1]
 
 

@@ -1,4 +1,4 @@
-"""TBA."""
+"""Find palindromes and palingrams within a word list."""
 import sys
 import time
 import logger
@@ -8,7 +8,7 @@ PALINGRAM_PATH: str = "palingrams.txt"
 
 
 def main():
-    """TBA."""
+    """Find palindromes and palingrams within a word list."""
     start_time = time.time()
     # Read dictionary file
     word_list: list = open_file(FILE_PATH)
@@ -24,12 +24,21 @@ def main():
     # Write palingram dict to file
     write_file(PALINGRAM_PATH, palingrams)
     end_time = time.time()
-    logger.log.info("Runtime for pal_gram_algo draft 1 was %s seconds.",
+    logger.log.info("Runtime for pal_gram_algo draft 2 was %s seconds.",
                     str(end_time - start_time))
 
 
 def pal_gram_algo(word: str, word_list: list) -> list:
-    """TBA."""
+    """Find palindromes and two-word palingrams.
+
+    Args:
+        word (str): word to process
+        word_list (list): word list for validation test
+
+    Returns:
+        list: found palindromes and two-word palingrams
+    """
+    # TODO Only check is_pal() for multi-char segments
     pals = []
     # mirror = [word, word[::-1]]  # To test word forward and reversed
     if is_pal(word):  # Single word palindrome
@@ -39,14 +48,14 @@ def pal_gram_algo(word: str, word_list: list) -> list:
         segment1 = word[:_i]
         segment2 = word[_i:]
         # print(segment1, segment2)
-        if segment1[::-1] in word_list and is_pal(segment2):
+        if is_pal(segment2) and segment1[::-1] in word_list:
             pals.append(f"{word} {segment1[::-1]}")
     # Search word reversed
     for _i in range(len(word)-1):
-        segment1 = word[:_i:-1]
-        segment2 = word[_i::-1]
+        segment1 = word[:_i:-1]  # word is reversed
+        segment2 = word[_i::-1]  # word is reversed
         # print(segment1, segment2)
-        if segment1 in word_list and is_pal(segment2):
+        if is_pal(segment2) and segment1 in word_list:
             pals.append(f"{segment1} {word}")
 
     return pals
@@ -65,21 +74,14 @@ def is_pal(word: str) -> bool:
 
 
 def write_file(file: str, palingrams: dict) -> None:
-    """TBA."""
+    """Write dictionary of lists of found palingrams."""
     with open(file, 'w', encoding="utf-8") as _f:
         for key, value in palingrams.items():
             _f.write(f"{key:<15} {', '.join(value)}\n")
 
 
 def open_file(file: str) -> list:
-    """Open file and return list of lines in lowercase.
-
-    Args:
-        FILE_PATH (str): The spelling dictionary file
-
-    Returns:
-        words (list): Word list in lowercase
-    """
+    """Open text file and return a list of words."""
     # Read dictionary file with try block
     try:
         with open(file, "r", encoding="utf-8") as word_file:

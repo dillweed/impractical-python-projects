@@ -12,28 +12,30 @@ def main():
     start_time = time.time()
     # Read dictionary file
     word_list: list = open_file(FILE_PATH)
-
-    # Init palingram dict of lists of str
+    word_set: set = set(word_list)
+    # Init palingram dict of list of str
     # Key is core word. Value is list containing found palingram strings
     palingrams = {}
     for word in word_list:
-        found_palingram = pal_gram_algo(word, word_list)
+        found_palingram = pal_gram_algo(word, word_set)
         if found_palingram:
             palingrams[word] = found_palingram
 
     # Write palingram dict to file
     write_file(PALINGRAM_PATH, palingrams)
     end_time = time.time()
-    logger.log.info("Runtime for pal_gram_algo draft 2 was %s seconds.",
+    logger.log.info("Runtime for pal_gram_algo rev 4 was %s seconds.",
                     str(end_time - start_time))
+    logger.log.info("Found %s words with palindromes or palingrams from %s",
+                    str(len(palingrams)), FILE_PATH)
 
 
-def pal_gram_algo(word: str, word_list: list) -> list:
+def pal_gram_algo(word: str, word_set: set) -> list:
     """Find palindromes and two-word palingrams.
 
     Args:
         word (str): word to process
-        word_list (list): word list for validation test
+        word_set (set): words for validation test
 
     Returns:
         list: found palindromes and two-word palingrams
@@ -48,14 +50,14 @@ def pal_gram_algo(word: str, word_list: list) -> list:
         segment1 = word[:_i]
         segment2 = word[_i:]
         # print(segment1, segment2)
-        if is_pal(segment2) and segment1[::-1] in word_list:
+        if segment1[::-1] in word_set and is_pal(segment2):
             pals.append(f"{word} {segment1[::-1]}")
     # Search word reversed
     for _i in range(len(word)-1):
         segment1 = word[:_i:-1]  # word is reversed
         segment2 = word[_i::-1]  # word is reversed
         # print(segment1, segment2)
-        if is_pal(segment2) and segment1 in word_list:
+        if segment1 in word_set and is_pal(segment2):
             pals.append(f"{segment1} {word}")
 
     return pals

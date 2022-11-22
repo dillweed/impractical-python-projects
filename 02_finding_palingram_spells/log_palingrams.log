@@ -1,3 +1,23 @@
 2022-11-21 14:37:20,924 Runtime for pal_gram_algo draft 1 was 213.71768403053284 seconds.
 2022-11-21 16:02:41,393 Runtime for pal_gram_algo draft 1 was 216.567724943161 seconds.
 2022-11-21 17:13:27,246 Runtime for pal_gram_algo draft 2 was 34.14365315437317 seconds.
+2022-11-21 17:46:56,504 Runtime for pal_gram_algo test was 34.180514097213745 seconds.
+2022-11-21 17:50:01,180 Runtime for pal_gram_algo test was 0.17307305335998535 seconds.
+2022-11-21 18:15:36,987 Runtime for pal_gram_algo test was 0.15842986106872559 seconds.
+2022-11-21 18:27:21,957 Runtime for pal_gram_algo rev 3 was 0.17566895484924316 seconds.
+2022-11-21 18:49:30,104 Runtime for pal_gram_algo rev 3 was 0.21419692039489746 seconds.
+2022-11-21 18:49:30,104 Found 1719 words with palindromes or palingrams from words_2of4brif.txt
+2022-11-21 18:49:30,253 Runtime for pal_gram_algo rev 3 was 0.14792394638061523 seconds.
+2022-11-21 18:49:30,253 Found 1194 words with palindromes or palingrams from words_inventwithpython.txt
+2022-11-21 18:49:30,501 Runtime for pal_gram_algo rev 3 was 0.24663901329040527 seconds.
+2022-11-21 18:49:30,501 Found 3903 words with palindromes or palingrams from words_jlawler.txt
+2022-11-21 18:49:30,887 Runtime for pal_gram_algo rev 3 was 0.38518619537353516 seconds.
+2022-11-21 18:49:30,887 Found 4550 words with palindromes or palingrams from words_thinkpython2.txt
+2022-11-21 19:08:22,097 Runtime for pal_gram_algo rev 4 was 0.20098161697387695 seconds.
+2022-11-21 19:08:22,097 Found 1719 words with palindromes or palingrams from words_2of4brif.txt
+2022-11-21 19:08:22,222 Runtime for pal_gram_algo rev 4 was 0.1237480640411377 seconds.
+2022-11-21 19:08:22,222 Found 1194 words with palindromes or palingrams from words_inventwithpython.txt
+2022-11-21 19:08:22,463 Runtime for pal_gram_algo rev 4 was 0.24070191383361816 seconds.
+2022-11-21 19:08:22,463 Found 3903 words with palindromes or palingrams from words_jlawler.txt
+2022-11-21 19:08:22,792 Runtime for pal_gram_algo rev 4 was 0.3277719020843506 seconds.
+2022-11-21 19:08:22,792 Found 4550 words with palindromes or palingrams from words_thinkpython2.txt

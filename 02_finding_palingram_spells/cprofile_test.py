@@ -1,3 +1,3 @@
 import cProfile
-import finding_palindromes
-cProfile.run('finding_palindromes.main()')
+import finding_two_word_palingrams
+cProfile.run('finding_two_word_palingrams.main()')

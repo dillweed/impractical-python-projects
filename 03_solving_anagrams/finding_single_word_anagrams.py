@@ -22,11 +22,12 @@ def main():
     # Make dict of anagrams from catalog
     anagrams = {k: v for k, v in catalog.items() if len(v) > 1}
 
-    # Count anagrams for log
+    # Count anagrams for log entry.
     total_anagrams = 0
     for _v in anagrams.values():
         total_anagrams += len(_v)
-    logger.log.info("catalog_words found %s anagrams.", total_anagrams)
+    logger.log.info("catalog_words found %s anagrams in %s.",
+                    total_anagrams, FILE_PATH)
 
     # Write anagram dict to file.
     write_file(ANAGRAM_PATH, anagrams)
@@ -37,6 +38,7 @@ def catalog_words(word_list: list) -> dict:
     # Init anagram dict of list of str.
     catalog: dict[str, list[str]] = defaultdict(
         lambda: [])  # Empty list as value
+
     # Key is sorted(word). Value is list of matching anagrams.
     for word in word_list:
         catalog[''.join(sorted(word))].append(word)

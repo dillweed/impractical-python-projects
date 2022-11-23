@@ -32,6 +32,22 @@ def main():
     # Write anagram dict to file.
     write_file(ANAGRAM_PATH, anagrams)
 
+    # Ask for single-word input.
+    interactive_prompt(catalog)
+
+
+def interactive_prompt(catalog: dict[str, list[str]]) -> None:
+    """TBA."""
+    while True:
+        word = input("\nType a single word or 'Q' to quit: ").lower()
+        if word == 'q':
+            sys.exit("\nGoodbye\n")
+        entry = catalog[''.join(sorted(word))]
+        if len(entry) > 1:
+            print("\nFound matches:", *entry)
+        else:
+            print("\nNo anagrams found.")
+
 
 def catalog_words(word_list: list) -> dict:
     """TBA."""

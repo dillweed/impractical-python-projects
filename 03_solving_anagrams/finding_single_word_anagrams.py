@@ -13,25 +13,34 @@ def main():
     # Read dictionary file.
     word_list: list[str] = open_file(FILE_PATH)
 
-    # Make anagram dict from list
+    # Make catalog from list
     start_time = time.time()
-    anagrams: dict[str, list] = catalog_anagrams(word_list)
-    logger.log.info("Runtime for catalog_anagrams was %s seconds.",
+    catalog: dict[str, list] = catalog_words(word_list)
+    logger.log.info("Runtime for catalog_words was %s seconds.",
                     str(time.time() - start_time))
+
+    # Make dict of anagrams from catalog
+    anagrams = {k: v for k, v in catalog.items() if len(v) > 1}
+
+    # Count anagrams for log
+    total_anagrams = 0
+    for _v in anagrams.values():
+        total_anagrams += len(_v)
+    logger.log.info("catalog_words found %s anagrams.", total_anagrams)
 
     # Write anagram dict to file.
     write_file(ANAGRAM_PATH, anagrams)
 
 
-def catalog_anagrams(word_list: list) -> dict:
+def catalog_words(word_list: list) -> dict:
     """TBA."""
     # Init anagram dict of list of str.
-    anagrams: dict[str, list[str]] = defaultdict(
+    catalog: dict[str, list[str]] = defaultdict(
         lambda: [])  # Empty list as value
     # Key is sorted(word). Value is list of matching anagrams.
     for word in word_list:
-        anagrams[''.join(sorted(word))].append(word)
-    return anagrams
+        catalog[''.join(sorted(word))].append(word)
+    return catalog
 
 
 def open_file(file: str) -> list:

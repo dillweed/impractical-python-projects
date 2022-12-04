@@ -36,7 +36,7 @@ def main():
     interactive_prompt(catalog)
 
 
-def interactive_prompt(catalog: dict[str, list[str]]) -> None:
+def interactive_prompt(catalog: dict) -> None:
     """TBA."""
     while True:
         word = input("\nType a single word or 'Q' to quit: ").lower()
@@ -52,7 +52,7 @@ def interactive_prompt(catalog: dict[str, list[str]]) -> None:
 def catalog_words(word_list: list) -> dict:
     """TBA."""
     # Init anagram dict of list of str.
-    catalog: dict[str, list[str]] = defaultdict(
+    catalog: dict[str, list] = defaultdict(
         lambda: [])  # Empty list as value
 
     # Key is sorted(word). Value is list of matching anagrams.

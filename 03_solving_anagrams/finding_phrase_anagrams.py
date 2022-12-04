@@ -28,7 +28,7 @@ def find_phrase(name: str, word_list: list) -> str:
     phrase = ""
     name_dict = Counter(name)
     while True:
-        options: list = find_next_word(name_dict, word_list)
+        options: list = find_options(name_dict, word_list)
         while options:
             # offer first item from options list
             print(f"\nName: {name}, \nPhrase: {phrase}\n")
@@ -46,7 +46,7 @@ def find_phrase(name: str, word_list: list) -> str:
             return phrase
 
 
-def find_next_word(name_dict: dict, word_list: list) -> list:
+def find_options(name_dict: dict, word_list: list) -> list:
     """TBA."""
     word_options = []
     for word in word_list:

@@ -13,9 +13,14 @@ def main():
     # Read dictionary file.
     word_list: list[str] = open_file(FILE_PATH)
 
+    # Get name input
     name = input("\nType your full name or 'Q' to quit: ").lower()
+
+    # Find anagram phrase from name
     result = find_phrase(name, word_list)
     print("\n", result, "\n")
+
+    # List unused letters from name
     name_dict = Counter(name)
     name_dict.subtract(Counter(result))
     print(name_dict)
@@ -26,20 +31,21 @@ def find_phrase(name: str, word_list: list) -> str:
     logger.log.info("Name: %s", name)
     logger.log.info("Name dict: %s", Counter(name))
     phrase = ""
-    name_dict = Counter(name)
+    name_dict = Counter(name)  # Dict of letter quantities
     while True:
         options: list = find_options(name_dict, word_list)
         while options:
             # offer first item from options list
             print(f"\nName: {name}, \nPhrase: {phrase}\n")
             response = input(f"Use \"{options[0]}\"? y n or q: ").lower()
-            if response == 'y':
+            if response == 'y':  # Add this word to the phrase
                 phrase = f"{phrase} {options[0]}".strip()
+                # Reduce name_dict by new word values
                 name_dict.subtract(Counter(options[0]))
                 break
-            if response == 'n':
+            if response == 'n':  # Remove the option
                 options.pop(0)
-            if response == 'q':
+            if response == 'q':  # Quit
                 sys.exit("bye")
             logger.log.info("Phrase: %s", phrase)
         if not options:  # return phrase when no options remain
@@ -47,7 +53,7 @@ def find_phrase(name: str, word_list: list) -> str:
 
 
 def find_options(name_dict: dict, word_list: list) -> list:
-    """TBA."""
+    """Return a list of words that fit inside name_dict."""
     word_options = []
     for word in word_list:
         flag = False
@@ -58,6 +64,7 @@ def find_options(name_dict: dict, word_list: list) -> list:
                 break
         if not flag:
             word_options.append(word)
+    # Sort word list with longest first
     word_options = sorted(word_options, key=len, reverse=True)
     return word_options
 
